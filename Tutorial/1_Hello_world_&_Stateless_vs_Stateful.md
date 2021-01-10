@@ -31,14 +31,12 @@ void main() {
 - `build` method: 화면을 구성하는 UI를 구현하는 method. 즉, 화면이 출력 될 때 `build()`가 호출되면서 내부 UI widget들이 화면에 출력.
 
   
-
 ## StatelessWidget
 
 - 상태를 가지지 않는 위젯 클래스
 - 내부 모든 widget은 상태를 가질 수 없으며 상태 변화를 인식할 필요가 없다
 - 화면 생성될 때 한번만 `build()` 호출하고 다시 호출되지 않는다
 - **`build()` 호출 1번**
-
 
 
 ## StatefulWidget
@@ -54,7 +52,6 @@ void main() {
 - **`setState`는 StatefulWidget의 내부 상태 변경할 때 사용되는 method이자 변경된 상태 값을 플랫폼에 전달하여 `build()` 호출**
 
   
-
 
 # [참고]
 
