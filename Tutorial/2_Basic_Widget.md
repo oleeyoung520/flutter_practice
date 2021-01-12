@@ -33,7 +33,7 @@
 
 ### match_parent, wrap_content
 
-![image-20210113064210943](markdown_images/image-20210113064210943.png)
+![image-20210113064210943.png](https://github.com/oleeyoung520/flutter_practice/blob/master/Tutorial/markdown_images/image-20210113064210943.png?raw=true)
 
 
 
