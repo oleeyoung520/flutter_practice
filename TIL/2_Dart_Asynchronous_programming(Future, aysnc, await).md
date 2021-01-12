@@ -39,9 +39,8 @@
 
 ## Future에서 결과값을 가져오는 방법
 
-1. then
-
 2. async, await
+2. then
 
 
 
@@ -75,31 +74,59 @@ void main() {
 
 ```
 
-- 3초를 기다리지 않고 바로 출력해서 올바른 결과를 얻지 못함
+- 3초를 기다리지 않고 바로 출력해서 보류 중인 작업을 표시(uncompleted future)
 
 - print 까지 기다리기 위해 then 또는 async, await이 필요
 
   
 
-### then
-
-
-
-
-
-
-
-
-
 ### async, await
 
-> - future가 완료될 때까지 실행을 일시 중단하려면 async 함수에서 await을 사용하면 된다.
-> - async 함수에서 try-catch 사용하여 에러를 잡는다.
-> - 코드를 동시에 실행하려면 isolate를 만든다.
+- Future 작업이 완료될 때까지 실행을 일시 중단하려면 async 함수에서 await를 사용하면 된다.
 
+- await 키워드를 사용하면 비동기 작업의 완성된 결과를 얻을 수 있다. await 키워드는 async function내에서만 작동한다.
 
+- 위의 코드에서 printLongTaskResult를 async 함수로 만들면
 
+  ```dart
+  void printLongTaskResult() async {
+    var result = await longTask();
+    print(result);
+  }
+  
+  // ** print result **
+  // one
+  // two
+  // three
+  // long task result
+  ```
 
+- async 함수에서 try-catch 사용하여 에러를 잡는다.
+
+  
+
+## then
+
+- future api를 사용하는 방법
+
+- then을 이용해서 위에서 async, await를 사용한 것과 같은 결과를 얻을 수 있다.
+
+- ```dart
+  void printLongTaskResult() {
+    var result = longTask();
+    result.then((value) => {
+        print(value)
+    });
+    // 에러 처리
+      result.catchError((e) => {
+          print(e.toString())
+      });
+  }
+  ```
+
+- async, await을 쓰는 방법과의 차이점은 then을 쓰면 value 값을 람다 함수 밖에서는 접근하지 못한다.
+
+- 에러를 잡을 때는 catchError를 사용한다.
 
 
 
@@ -111,9 +138,6 @@ void main() {
 - https://youtu.be/CCMuCvcOfnQ?list=LL
 
 - https://dart.dev/codelabs/async-await
-- https://puzzleleaf.tistory.com/216
-
 - https://benghak.github.io/2020-01-27-Flutter_week_05_01/
 
-- https://chopby.tistory.com/45
 
