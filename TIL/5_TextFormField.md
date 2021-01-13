@@ -80,8 +80,8 @@ class _LoginPageState extends State<LoginPageRoute> {
     Widget PasswordInput() {
           // UserInfoTextFormField: Custom TextFormField
           return UserInfoTextFormField(
-              validator: (val) => !ValidationUtils.validationPWLogin(val)? msg_empty_password: null,
-              onChanged: (val) {setState(() => _email = val);},
+              controller: passwordCtr,
+              validator: (val) => (passwordCtr.text != val)? msg_empty_password: null,
           );
       }
 
@@ -93,96 +93,6 @@ class _LoginPageState extends State<LoginPageRoute> {
       }
     }
 ```
-
-
-
-
-
-## 추가
-
-- Form 없이 사용 가능
-
-- Form 없이 사용하려면 GlobalKey를 생성자에 전달하고 GlobalKey.currentState를 사용하여 Form Field를 save, reset 하면 된다
-
-- TextEditingController.text 사용
-
-- 더이상 필요하지 않으면 TextEditingController.dispose 호출해서 삭제
-
-- ```
-  /// Flutter code sample for TextFormField
-  
-  // This example shows how to move the focus to the next field when the user
-  // presses the SPACE key.
-  
-  import 'package:flutter/material.dart';
-  
-  import 'package:flutter/services.dart';
-  
-  void main() => runApp(MyApp());
-  
-  /// This is the main application widget.
-  class MyApp extends StatelessWidget {
-    static const String _title = 'Flutter Code Sample';
-  
-    @override
-    Widget build(BuildContext context) {
-      return MaterialApp(
-        title: _title,
-        home: MyStatefulWidget(),
-      );
-    }
-  }
-  
-  /// This is the stateful widget that the main application instantiates.
-  class MyStatefulWidget extends StatefulWidget {
-    MyStatefulWidget({Key key}) : super(key: key);
-  
-    @override
-    _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
-  }
-  
-  /// This is the private State class that goes with MyStatefulWidget.
-  class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-    Widget build(BuildContext context) {
-      return Material(
-        child: Center(
-          child: Shortcuts(
-            shortcuts: <LogicalKeySet, Intent>{
-              // Pressing space in the field will now move to the next field.
-              LogicalKeySet(LogicalKeyboardKey.space): const NextFocusIntent(),
-            },
-            child: FocusTraversalGroup(
-              child: Form(
-                autovalidateMode: AutovalidateMode.always,
-                onChanged: () {
-                  Form.of(primaryFocus.context).save();
-                },
-                child: Wrap(
-                  children: List<Widget>.generate(5, (int index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints.tight(const Size(200, 50)),
-                        child: TextForm-Field(
-                          onSaved: (String value) {
-                            print('Value for field $index saved as "$value"');
-                          },
-                        ),
-                      ),
-                    );
-                  }),
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
-    }
-  }
-  
-  ```
-
-
 
 
 
