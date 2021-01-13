@@ -132,7 +132,7 @@ void main() {
 
 
 
-## cf) 참고자료
+## [참고]
 
 - https://medium.com/flutter-community/futures-async-await-threading-in-flutter-baeeab1c1fe3
 - https://youtu.be/CCMuCvcOfnQ?list=LL
