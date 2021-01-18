@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'LoginFormRoute.dart';
 import 'dart:async';
+import 'MainNavigationRoute.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         home: SplashScreen(),
         routes: <String, WidgetBuilder> {
-          '/LoginFormRoute': (BuildContext context) => LoginFormRoute()
+          '/MainNavigationRoute': (BuildContext context) => MainNavigationRoute()
     }
     );
   }
@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationPage() {
-    Navigator.of(context).pushReplacementNamed('/LoginFormRoute');
+    Navigator.of(context).pushReplacementNamed('/MainNavigationRoute');
   }
 
   @override
