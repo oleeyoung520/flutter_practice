@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ImageGridViewRoute.dart';
 import 'LoginFormRoute.dart';
+import 'MethodChannelRoute.dart';
 
 class MainNavigationRoute extends StatelessWidget {
   @override
@@ -10,8 +11,8 @@ class MainNavigationRoute extends StatelessWidget {
     final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
     final double itemWidth = size.width / 2;
 
-    final List<String> routerNameList = ['LoginFormRoute', 'ImageGridViewRoute'];
-    final List<Widget> routerList = [LoginFormRoute(), ImageGridViewRoute()];
+    final List<String> routerNameList = ['LoginFormRoute', 'ImageGridViewRoute', 'MethodChannelRoute'];
+    final List<Widget> routerList = [LoginFormRoute(), ImageGridViewRoute(), MethodChannelRoute()];
 
     void NavigateFunction(Widget widget) {
       Navigator.push(context,
